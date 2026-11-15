@@ -18,8 +18,8 @@ jobs:
         with:
           root_file: ${{ env.FILE }}
           working_directory: ${{ env.DIR }}
-          # 👇 加上下面这一行，强制使用 xelatex 引擎编译中文 👇
           args: -xelatex
+          extra_system_packages: "texlive-lang-chinese"
       - name: move
         run: mkdir -p github_artifacts && mv ${{ env.DIR }}/${{ env.FILE }}.pdf ./github_artifacts/
       - name: Upload pdf as artifact
